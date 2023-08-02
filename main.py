@@ -8,16 +8,6 @@ from lxml import html
 
 logging.basicConfig(level=logging.INFO)
 
-bot = Bot(API_TOKEN)
-dp = Dispatcher(bot)
-
-
-async def on_start_command(message: types.Message, call: types.CallbackQuery):
-    await bot.send_message(message.from_user.id, text="Для доступа подайте завяку внизу.")
-    
-async def on_text_message(message: types.Message):
-    await bot.send_message(message.from_user.id, text=search(message.text))
-
 def replace_spaces_with_percent20(input_string):
     char_list = list(input_string)
     for i in range(len(char_list)):
@@ -33,9 +23,7 @@ def search(input_string):
     
     result0 = f'Ваш результат по запросу "{input_string}":\n\nАвито: {avito}\nЯндекс маркет: {market}'
     return result0
-    
 
-if __name__ == "__main__":
-    main()
+
 
 
